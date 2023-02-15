@@ -4,13 +4,36 @@ body {
 }
 
 hr{
-  width: 500px;
+  width: 100%;
+}
+#header{
+  display: flex;
+  justify-content: center;
+}
+#titleDiv{
+  display: flex;
+  justify-content: center;
 }
 
+#spacer{
+  display: flex;
+  flex: 1;
+  justify-content: left;
+}
 #title{
+  display:flex;
+  flex: 1;
   font-size:36px;
   font-weight: bold;
   letter-spacing: 2px;
+  justify-content:center;
+}
+#icons{
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  justify-content: right;
+  align-items: center;
 }
 
 #interface{
