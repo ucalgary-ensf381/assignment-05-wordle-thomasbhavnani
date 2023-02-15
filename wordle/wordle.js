@@ -111,12 +111,15 @@ function check(){
         let character = nowTile.innerText;
         console.log(letterDictUser[character])
         
-        if(correctWord.includes(character) && letterDictUser[character] < letterDictCorrect[character]){
+        if(correctWord.includes(character) && letterDictUser[character] < letterDictCorrect[character] && !nowTile.classList.contains("green-tile")){
             nowTile.classList.add("yellow-tile");
-            letterDictUser[character] += 1
+            letterDictUser[character] += 1;
         }
         else if(!nowTile.classList.contains('green-tile') && !nowTile.classList.contains('yellow-tile')){
             nowTile.classList.add("gray-tile")
+        }
+        else{
+
         }   
     }
 }
