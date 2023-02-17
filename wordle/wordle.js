@@ -67,7 +67,6 @@ function initialize(){
     }
     document.addEventListener("keyup", (e) => {
         if (endGame){
-
             return;
         } 
         
@@ -75,6 +74,7 @@ function initialize(){
             console.log(e.code);
             if (column < width){
                 let nowTile = document.getElementById(row.toString() + '-' + column.toString());
+                
                 console.log(nowTile)
                 console.log(e.code[3])
                 console.log(nowTile.innerText)
@@ -142,7 +142,9 @@ function check(){
             letterDictUser[character] += 1
         }
         if(rightLetters == width){
+            displaywin();
             endGame = true;
+    
         }
     }
     for(let col = 0; col < width; col++){
@@ -183,5 +185,13 @@ function losscall(){
 }
 
 function displaywin(){
-    document.getElementById("interface").classList
+    document.getElementById("interface").innerHTML = "<img src = \"congrats.gif\"\>";
+
+}
+
+function howToPlay(){
+    document.getElementById("interface").classList.toggle("shift-grid")
+    document.getElementById("howto").classList.toggle("howToClass")
+    document.getElementById("startover").classList.toggle("shift-grid")
+    document.getElementById("spacer").classList.toggle("shift-grid")
 }

@@ -88,12 +88,13 @@ hr{
 
 #interface{
     width: 350px;
-    height: 420px;
+    height: 320px;
     margin: 0 auto;
     margin-top: 3px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-top: 50px;
 }
 
 .rowsDiv{
@@ -156,4 +157,38 @@ hr{
   align-items:center;
   justify-content: center;
   height: 50px;
+}
+
+#startover{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items:center;
+}
+
+#startover button{
+  height: 40px;
+  width: 80px;
+  margin-bottom: 50px;
+  color: white;
+  background-color: green;
+  border-color: white;
+}
+
+
+#howtoDiv{
+  display: flex;
+  flex-direction: row;
+}
+
+.shift-grid{
+  display:flex;
+  flex-direction: row;
+  width:30%;
+}
+
+.howToClass{
+  display:flex;
+  flex-direction: row;
+  width:30%;
 }
