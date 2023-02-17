@@ -49,13 +49,13 @@ window.onload = function(){
 function initialize(){
     //make board
     for(let r = 0; r < height; r++){
-        let rowsDiv = document.createElement("div");  // rowsDiv =  <div id="0" class="rowsDiv"> </div>
-        rowsDiv.id = r.toString();                      // 
+        let rowsDiv = document.createElement("div");  
+        rowsDiv.id = r.toString();                      
         rowsDiv.classList.add("rowsDiv");
         document.getElementById("interface").appendChild(rowsDiv);
         
         for(let c = 0; c < width; c++){
-            let tile = document.createElement("span");  // <span id = "0-1" class = "tile">P</span>
+            let tile = document.createElement("span");  
             tile.id = r.toString() + "-" + c.toString();
             tile.classList.add("tile");
             tile.innerText = "";
@@ -168,9 +168,8 @@ function check(){
 
 function darkMode(){
     document.body.classList.toggle('dark-mode')
+    
 }
-
-
 
 
 function hintcall(){
@@ -194,4 +193,79 @@ function howToPlay(){
     document.getElementById("howto").classList.toggle("howToClass")
     document.getElementById("startover").classList.toggle("shift-grid")
     document.getElementById("spacer").classList.toggle("shift-grid")
+    var howTo = document.getElementById("howto")
+}
+
+
+function startOver(){
+    setWordHint();
+    if(document.getElementById("hintid").classList.contains("hint")){
+        document.getElementById("hintid").classList.remove("hint");
+        document.getElementById("hintid").innerText = "";
+    }
+    if(document.getElementById("hintid").classList.contains("loss")){
+        document.getElementById("hintid").classList.remove("loss");
+    }
+    if(!document.getElementById("interface").classList.contains("tile")){
+        document.getElementById("interface").innerHTML = "";
+        for(let r = 0; r < height; r++){
+            let rowsDiv = document.createElement("div");  
+            rowsDiv.id = r.toString();                      
+            rowsDiv.classList.add("rowsDiv");
+            document.getElementById("interface").appendChild(rowsDiv);
+            
+            for(let c = 0; c < width; c++){
+                let tile = document.createElement("span");  
+                tile.id = r.toString() + "-" + c.toString();
+                tile.classList.add("tile");
+                tile.innerText = "";
+                
+                document.getElementById(r.toString()).appendChild(tile);
+                
+            }
+        }
+        
+    }
+    row = 0;
+    column = 0;
+    
+
+    for (let i=0; i< width; i++){
+        for (let j=0; j< height; j++){
+            var box = document.getElementById(`${i}-${j}`);        
+            box.innerHTML = "";
+
+            if(box.classList.contains("gray-tile")){
+                box.classList.remove("gray-tile"); 
+            }
+            if(box.classList.contains("green-tile")){
+                box.classList.remove("green-tile")
+            }
+            if(box.classList.contains("yellow-tile")){
+                box.classList.remove("yellow-tile")
+            }
+            document.getElementById(i.toString() + "-" + j.toString()).remove(box);
+
+        }
+        
+    }
+    for(let r = 0; r < height; r++){
+        let rowsDiv = document.createElement("div");  
+        rowsDiv.id = r.toString();                      
+        rowsDiv.classList.add("rowsDiv");
+        document.getElementById("interface").appendChild(rowsDiv);
+        
+        for(let c = 0; c < width; c++){
+            let tile = document.createElement("span");  
+            tile.id = r.toString() + "-" + c.toString();
+            tile.classList.add("tile");
+            tile.innerText = "";
+            
+            document.getElementById(r.toString()).appendChild(tile);
+            
+        }
+        
+    }
+row = 0;
+column = 0;
 }

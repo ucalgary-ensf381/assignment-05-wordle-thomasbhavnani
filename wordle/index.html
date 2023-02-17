@@ -24,17 +24,43 @@
         <hr>
         <br>
           <div id="howtoDiv">
-            
+            <div id="grid-and-howto">
             <div id = "interface">
             </div>
+              <div id = "startover"><button onclick = startOver()>Start Over</button></div>
+            </div>
             <div id = "howto">
+              <h1 id = howto-header>How To Play</h1>
+              <ul>
+                <li id = howto-bullet>
+                  Start typing. The letters will appear in the boxes
+                </li>
+                <li id = howto-bullet>
+                  Remove the letters with Backspace
+                </li>
+                <li id = howto-bullet>
+                  Hit Enter/Return to submit an answer
+                </li>
+                <li id = howto-bullet>
+                  Letters with green background are in the right spot
+                </li>
+                <li id = howto-bullet>
+                  Letters with yellow background exist in the word, but are in the wrong spots
+                </li>
+                <li id = howto-bullet>
+                  Letters with gray background do not exist in the word
+                </li>
+                <li id = howto-bullet>
+                  If you need a hint, click the <b>&#63;</b> icon
+                </li>
+              </ul>
             </div>
         </div>
       
       <br>
       <h1 id = "correct-answer"></h1>
       <script src="./wordle.js"></script>
-      <div id = "startover"><button onclick = startOver()>Start Over</button></div>
+      
       <div id = "hintid"></div>
       
   </body>
