@@ -33,7 +33,6 @@ async function setWordHint(){
 
 
 
-
 var endGame = false;
 
 //put array of words from dictionary
@@ -47,7 +46,7 @@ window.onload = function(){
 
 
 function initialize(){
-    //make board
+    //make board 
     for(let r = 0; r < height; r++){
         let rowsDiv = document.createElement("div");  
         rowsDiv.id = r.toString();                      
@@ -65,6 +64,10 @@ function initialize(){
         }
         console.log(rowsDiv)
     }
+
+    let nextTile = document.getElementById("0-0");
+    nextTile.classList.add("tile-active")
+
     document.addEventListener("keyup", (e) => {
         if (endGame){
             return;
@@ -72,30 +75,48 @@ function initialize(){
         
         if("KeyA" <= e.code && e.code <= "KeyZ"){
             console.log(e.code);
+
             if (column < width){
+
                 let nowTile = document.getElementById(row.toString() + '-' + column.toString());
+                if(column < width - 1){
+                    nowTile.classList.remove("tile-active");
+                    let nextTile = document.getElementById(row.toString() + '-' + (column + 1).toString());
+                    nextTile.classList.add("tile-active");
+                }
+                else{
+                    nowTile.classList.remove("tile-active");
+                }
                 
                 console.log(nowTile)
                 console.log(e.code[3])
                 console.log(nowTile.innerText)
+                
                 if(nowTile.innerText = '<empty string>'){
                     //gets the letter being typed
                     console.log(e.code[3])
                     nowTile.innerText = e.code[3];
                     column += 1;
+                    
                 }
+   
             }
+            
         }
+       
             else if (e.code == "Backspace"){
                 if (0 < column && column <= width){
                     column -=1;
                 }
+                
                 let nowTile = document.getElementById(row.toString() + '-' + column.toString());
+                let nextTile = document.getElementById(row.toString() + '-' + (column + 1).toString())
+                nextTile.classList.add("tile-active")
                 nowTile.innerText = "";
             }
             else if(e.code == "Enter"){
                 if(column != width){
-
+                    window.alert("You must complete the word first.")
                 }
                 else{
                     check();
@@ -105,10 +126,9 @@ function initialize(){
             }
             if(!endGame && row == height){
                 endGame = true;
-                document.getElementById("correct-answer").innerText = word;
                 losscall();
             }
-
+            
         })
 }
 
@@ -149,6 +169,7 @@ function check(){
     }
     for(let col = 0; col < width; col++){
         let nowTile = document.getElementById(row.toString() + '-' + col.toString());
+        console.log(nowTile)
         let character = nowTile.innerText;
         console.log(letterDictUser[character])
         
@@ -157,7 +178,7 @@ function check(){
             letterDictUser[character] += 1;
         }
         else if(!nowTile.classList.contains('green-tile') && !nowTile.classList.contains('yellow-tile')){
-            nowTile.classList.add("gray-tile")
+            nowTile.classList.add("gray-tile");
         }
         else{
 
@@ -167,7 +188,7 @@ function check(){
 
 
 function darkMode(){
-    document.body.classList.toggle('dark-mode')
+    document.body.classList.toggle('dark-mode');
     
 }
 
@@ -180,75 +201,54 @@ function hintcall(){
 
 function losscall(){
         document.getElementById("hintid").classList.add("loss");
-        document.getElementById("hintid").innerText= "you lost";
+        document.getElementById("hintid").innerText= "You missed the word " + word +" and lost!";
 }
 
 function displaywin(){
-    document.getElementById("interface").innerHTML = "<img src = \"congrats.gif\"\>";
+    document.getElementById("hide-congrats").classList.toggle("show-congrats");
+    document.getElementById("interface").classList.toggle("hide-interface");
 
 }
 
 function howToPlay(){
-    document.getElementById("interface").classList.toggle("shift-grid")
-    document.getElementById("howto").classList.toggle("howToClass")
-    document.getElementById("startover").classList.toggle("shift-grid")
-    document.getElementById("spacer").classList.toggle("shift-grid")
-    var howTo = document.getElementById("howto")
+    document.getElementById("interface").classList.toggle("shift-grid");
+    document.getElementById("howto").classList.toggle("howToClass");
+    document.getElementById("startover").classList.toggle("shift-grid");
+    document.getElementById("spacer").classList.toggle("shift-grid");
+    
 }
 
 
 function startOver(){
     setWordHint();
     if(document.getElementById("hintid").classList.contains("hint")){
+
         document.getElementById("hintid").classList.remove("hint");
         document.getElementById("hintid").innerText = "";
     }
+
     if(document.getElementById("hintid").classList.contains("loss")){
+
         document.getElementById("hintid").classList.remove("loss");
+        document.getElementById("hintid").innerText = "";
     }
-    if(!document.getElementById("interface").classList.contains("tile")){
-        document.getElementById("interface").innerHTML = "";
-        for(let r = 0; r < height; r++){
-            let rowsDiv = document.createElement("div");  
-            rowsDiv.id = r.toString();                      
-            rowsDiv.classList.add("rowsDiv");
-            document.getElementById("interface").appendChild(rowsDiv);
-            
-            for(let c = 0; c < width; c++){
-                let tile = document.createElement("span");  
-                tile.id = r.toString() + "-" + c.toString();
-                tile.classList.add("tile");
-                tile.innerText = "";
-                
-                document.getElementById(r.toString()).appendChild(tile);
-                
-            }
-        }
+
+    if(document.getElementById("interface").classList.contains("hide-interface")){
+        document.getElementById("interface").classList.remove("hide-interface")
+        document.getElementById("hide-congrats").classList.remove("show-congrats")
         
     }
-    row = 0;
-    column = 0;
-    
+    endGame = false;
 
     for (let i=0; i< width; i++){
         for (let j=0; j< height; j++){
-            var box = document.getElementById(`${i}-${j}`);        
-            box.innerHTML = "";
-
-            if(box.classList.contains("gray-tile")){
-                box.classList.remove("gray-tile"); 
-            }
-            if(box.classList.contains("green-tile")){
-                box.classList.remove("green-tile")
-            }
-            if(box.classList.contains("yellow-tile")){
-                box.classList.remove("yellow-tile")
-            }
-            document.getElementById(i.toString() + "-" + j.toString()).remove(box);
-
+            var tile = document.getElementById(`${i}-${j}`);        
+            tile.innerHTML = "";
+            tile.remove(tile);   
         }
-        
     }
+
+
     for(let r = 0; r < height; r++){
         let rowsDiv = document.createElement("div");  
         rowsDiv.id = r.toString();                      
@@ -261,11 +261,11 @@ function startOver(){
             tile.classList.add("tile");
             tile.innerText = "";
             
-            document.getElementById(r.toString()).appendChild(tile);
-            
+            document.getElementById(r.toString()).appendChild(tile);   
         }
-        
     }
-row = 0;
-column = 0;
+    row = 0;
+    column = 0;
 }
+    
+

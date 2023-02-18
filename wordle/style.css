@@ -13,10 +13,10 @@ body {
 .dark-mode .tile{
   color:white;
 }
-.dark-mode button{
+.dark-mode label{
   color:white;
 }
-.dark-mode button:hover{
+.dark-mode label:hover{
   color: white;
 }
 hr{
@@ -57,7 +57,7 @@ hr{
   align-items: center;
 }
 
-#icons button:hover {
+#icons label:hover {
   background-color: #ddd;
   color: rgb(0, 0, 0);
 }
@@ -75,7 +75,7 @@ hr{
   padding-left: 30px;
   padding-right: 30px;
   margin:0px;
-  background-color:transparent;
+  background-color: transparent;
   border: 0px;
   justify-content: center;
 }
@@ -97,7 +97,7 @@ hr{
 }
 
 .tile{
-  border: 2px solid gray;
+  border: 2px solid grey;
   width: 60px;
   height: 60px;
   margin: 2.5px;
@@ -158,17 +158,19 @@ hr{
   flex-direction: column;
   text-align: center;
   align-items:center;
+  padding-top: 20px ;
 }
 
-#startover button{
+#startover label{
+  text-align: center;
+  align-items: center;
+
   height: 40px;
   width: 80px;
   margin-bottom: 50px;
   color: white;
   background-color: green;
   border-color: white;
-  
-  
 }
 
 
@@ -196,7 +198,9 @@ hr{
   width:20%;
   flex:1;
   padding-right: 10%;
-  height: 70%;
+  border-left: solid 2px black;
+  padding-top:10%;
+  padding-bottom:10%
 
 }
 
@@ -217,5 +221,32 @@ hr{
   padding-bottom: 15px;
 }
 #howto-header{
-  text-align: left;
+  padding-right:50%;
+}
+
+#hide-congrats{
+  display: none;
+}
+
+.show-congrats{
+  display: flex !important;
+  height: 350px;
+  width: 400px;
+}
+
+.hide-interface{
+  display: none !important;
+}
+
+#footer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 40px;
+  border-top: 1px solid rgb(0, 0, 0);
+}
+
+.tile-active{
+  border:3px solid black;
 }

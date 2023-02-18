@@ -15,9 +15,9 @@
         <div id = "spacer"></div>
         <div id = "titleDiv"><h1 id = "title">Wordle</h1></div>
         <div id = "icons">
-          <button id = infoicon onclick = darkMode()>&#9681;</button>
-          <button id = infoicon onclick = hintcall()>&#63;</button>
-          <button id = infoicon onclick = howToPlay()> &#9432;</button>
+          <label id = infoicon onclick = darkMode()>&#9681;</label>
+          <label id = infoicon onclick = hintcall()>&#63;</label>
+          <label id = infoicon onclick = howToPlay()> &#9432;</label>
         </div>
         
       </div>
@@ -25,10 +25,12 @@
         <br>
           <div id="howtoDiv">
             <div id="grid-and-howto">
+            <img id = "hide-congrats" src = "congrats.gif" alt = "congrats.gif"></img>
             <div id = "interface">
             </div>
-              <div id = "startover"><button onclick = startOver()>Start Over</button></div>
+              <div id = "startover"><label onclick = startOver()>Start Over</label></div>
             </div>
+            
             <div id = "howto">
               <h1 id = howto-header>How To Play</h1>
               <ul>
@@ -58,10 +60,10 @@
         </div>
       
       <br>
-      <h1 id = "correct-answer"></h1>
+      
       <script src="./wordle.js"></script>
       
       <div id = "hintid"></div>
-      
+      <div id = "footer">&copy Thomas Bhavnani 2023</div>
   </body>
 </html>
