@@ -1,5 +1,5 @@
-var height = 4; //guesses
-var width = 4; //word len
+var height = 4; 
+var width = 4; 
 
 var row = 0;
 var column = 0;
@@ -11,6 +11,9 @@ var hint;
 
 async function getWordAndHint(){
     if(wordList == null){
+        document.getElementById("startbutton").disabled;
+        document.getElementById("startbutton").innerHTML = "Loading...";
+
         const res = await fetch("https://api.masoudkf.com/v1/wordle", {
             headers: {
             "x-api-key": "sw0Tr2othT1AyTQtNDUE06LqMckbTiKWaVYhuirv",
@@ -19,6 +22,8 @@ async function getWordAndHint(){
         let temp = await res.json();
         var {dictionary} = temp;
         wordList = dictionary;
+        document.getElementById("startbutton").enabled;
+        document.getElementById("startbutton").innerHTML = "Start Over";
     }
 }
 
@@ -110,8 +115,12 @@ function initialize(){
                 }
                 
                 let nowTile = document.getElementById(row.toString() + '-' + column.toString());
-                let nextTile = document.getElementById(row.toString() + '-' + (column + 1).toString())
-                nextTile.classList.add("tile-active")
+
+                if(column < width - 1){
+                    let nextTile = document.getElementById(row.toString() + '-' + (column + 1).toString())
+                    nextTile.classList.remove("tile-active")
+                }
+                nowTile.classList.add("tile-active");
                 nowTile.innerText = "";
             }
             else if(e.code == "Enter"){

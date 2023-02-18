@@ -158,19 +158,19 @@ hr{
   flex-direction: column;
   text-align: center;
   align-items:center;
-  padding-top: 20px ;
+  padding-top: 20px;
 }
 
 #startover label{
-  text-align: center;
-  align-items: center;
-
+  display: flex;
   height: 40px;
   width: 80px;
   margin-bottom: 50px;
   color: white;
   background-color: green;
-  border-color: white;
+  border:solid 3px white;
+  align-items: center;
+  justify-content: center;
 }
 
 
@@ -248,5 +248,5 @@ hr{
 }
 
 .tile-active{
-  border:3px solid black;
+  border:3px solid rgb(118, 7, 115);
 }
